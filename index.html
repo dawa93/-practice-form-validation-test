@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>validation</title>
+    <script>
+      // function validate() {
+      //   let name = document.forms["myForm"]["fname"].value;
+      //   if (name === "") {
+      //     alert("이름을 정확히 입력해주세요");
+      //     return false;
+      //   }
+      // }
+
+      // function myFunction() {
+      //   let msg, age;
+      //   age = document.querySelector("#age").value;
+      //   if (age < 0 || age > 130 || isNaN(age)) {
+      //     msg = "너는 휴먼이 아니야";
+      //   } else {
+      //     msg = "반갑다 휴먼";
+      //   }
+      //   document.querySelector("#areyou").textContent = msg;
+      // }
+
+      function whoAreYou() {
+        let name = document.querySelector("#nameBox").value;
+        let age = document.querySelector("#ageBox").value;
+        let sex = document.querySelector("#genderBox").value;
+        let job = document.querySelector("#jobBox").value;
+        let msg = "";
+
+        if (age < 0 || age > 130 || isNaN(age)) {
+          msg = msg + `당신은 human인가?`;
+        } else {
+          if (name !== "") {
+            msg = msg + `당신의 이름은 ${name}고,`;
+          }
+          if (age > 0 && age < 130 && !isNaN(age)) {
+            msg = msg + `당신의 나이는 ${age}고,`;
+          }
+          if (sex === "Male" || sex === "Female") {
+            msg = msg + `당신의 ${sex}다.`;
+          }
+          if (typeof job === "string") {
+            msg = msg + `추가로 당신의 직업은 ${job}이다`;
+          }
+        }
+
+        document.querySelector("#msgForU").textContent = msg;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>human? or ... ?</h1>
+    <div>
+      <span>Name :</span>
+      <input type="text" id="nameBox" placeholder="put ur beautiful name " />
+    </div>
+
+    <div>
+      <span>Age :</span>
+      <input type="text" id="ageBox" placeholder=" r u fresh? or hmmm.." />
+    </div>
+
+    <div>
+      <span>Sex :</span>
+      <input type="radio" name="gendercheck" id="genderBox" />Male
+      <input type="radio" name="gendercheck" id="genderBox" />Female
+    </div>
+
+    <div>
+      <span>Job :</span>
+      <input type="text" id="jobBox" placeholder="u have lots of money?" />
+    </div>
+    <button id="sendButton" onclick="whoAreYou()">submit</button>
+    <div id="msgForU"></div>
+    <!-- <form name="myForm" onsubmit="return validate()">
+      <span>이름 : </span>
+      <input type="text" name="fname" placeholder="이름을 적어주세요" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <span>나이 : </span>
+    <input type="text" id="age" placeholder="나이를 적어주세요" />
+    <button type="button" onclick="myFunction()">submit</button>
+    <span id="areyou"></span> -->
+  </body>
+</html>
